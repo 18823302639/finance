@@ -1,0 +1,94 @@
+﻿{include file="Public/_meta"}
+<title>产品分类</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 产品管理 <span class="c-gray en">&gt;</span> 产品分类 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<table class="table table-border table-bordered table-bg table-sort">
+	<thead>
+	<tr class="text-c">
+		<th width="25"><input type="checkbox" name="" value=""></th>
+		<th width="70">ID</th>
+		<th width="80">排序</th>
+		<th width="150">分类名称</th>
+		<th>具体描述</th>
+		<th width="100">操作</th>
+	</tr>
+	</thead>
+	<tbody>
+	{volist name="arr" id="vo"}
+		<tr class="text-c">
+			<td><input name="" type="checkbox" value=""></td>
+			<td>{$vo.category_id}</td>
+			<td><input type="text" class="input-text text-c" value="1"></td>
+			<td class="text-l"><img title="品牌" src="static/h-ui.admin/images/cn.gif"> {$vo.category_name}</td>
+			<td class="text-l">{$vo.category_describe}</td>
+			<td class="f-14 product-brand-manage"><a style="text-decoration:none" onClick="product_brand_edit('品牌编辑','codeing.html','1')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="active_del(this,'10001')" href="javascript:;" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+		</tr>
+	{/volist}
+	</tbody>
+</table>
+
+{include file="Public/_footer"}
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/zTree/v3/js/jquery.ztree.all-3.5.min.js"></script> 
+<script type="text/javascript">
+var setting = {
+	view: {
+		dblClickExpand: false,
+		showLine: false,
+		selectedMulti: false
+	},
+	data: {
+		simpleData: {
+			enable:true,
+			idKey: "id",
+			pIdKey: "pId",
+			rootPId: ""
+		}
+	},
+	callback: {
+		beforeClick: function(treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			if (treeNode.isParent) {
+				zTree.expandNode(treeNode);
+				return false;
+			} else {
+				demoIframe.attr("src",treeNode.file + ".html");
+				return true;
+			}
+		}
+	}
+};
+
+var zNodes =[
+	{ id:1, pId:0, name:"一级分类", open:true},
+	{ id:11, pId:1, name:"二级分类"},
+	{ id:111, pId:11, name:"三级分类"},
+	{ id:112, pId:11, name:"三级分类"},
+	{ id:113, pId:11, name:"三级分类"},
+	{ id:114, pId:11, name:"三级分类"},
+	{ id:115, pId:11, name:"三级分类"},
+	{ id:12, pId:1, name:"二级分类 1-2"},
+	{ id:121, pId:12, name:"三级分类 1-2-1"},
+	{ id:122, pId:12, name:"三级分类 1-2-2"},
+];
+		
+var code;
+		
+function showCode(str) {
+	if (!code) code = $("#code");
+	code.empty();
+	code.append("<li>"+str+"</li>");
+}
+		
+$(document).ready(function(){
+	var t = $("#treeDemo");
+	t = $.fn.zTree.init(t, setting, zNodes);
+	demoIframe = $("#testIframe");
+	//demoIframe.on("load", loadReady);
+	var zTree = $.fn.zTree.getZTreeObj("tree");
+	//zTree.selectNode(zTree.getNodeByParam("id",'11'));
+});
+</script>
+</body>
+</html>

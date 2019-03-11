@@ -1,0 +1,17 @@
+.finance-body {min-width: 320px;max-width:640px;margin:auto;height: 100%;overflow: auto;margin-bottom:20px;}
+.finance-body .row {
+    overflow: hidden;}
+.fina-toos {background: #f7f7f9;}
+.fina-toos .hui-mina,.hui-minb {line-height:28px;text-indent:2em;}
+.fina-threes img {width:100%;}
+.fina-threes .thumbnail {box-shadow: 3px 3px 3px #ececf0;}
+
+
+.details-body {}
+.details-body .row {overflow: hidden;}
+.details-body .hui-header p {font-size:1.5rem;letter-spacing: 0.2rem;font-weight: 600;}
+.details-body .hui-header .line {border-top:1px solid #000;}
+.details-body .hui-ones {margin-top:1rem;}
+.details-body .hui-ones .thumbnail {padding:0px; border:none;margin-top:25px;}
+.details-body .hui-toos {margin-top:2rem;}
+.details-body .hui-toos .form-horizontal .form-label {text-align:right;padding-right:0px;}
